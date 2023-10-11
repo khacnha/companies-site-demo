@@ -6,3 +6,5 @@ uuid
 django-environ==0.10.0
 requests
 django-debug-toolbar
+django-widget-tweaks
+six

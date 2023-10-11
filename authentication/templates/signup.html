@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title text-center mb-5 fw-light fs-5">Create your account!</h5>
+                    <form method="post" action="{% url 'authentication:signup' %}">
+                        {% csrf_token %}
+                        {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+                        {% for field in form.visible_fields %}
+                            <div class="form-outline mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field|add_class:'form-control' }}
+                                {% for error in field.errors %}<span class="text-danger">{{ error }}</span>{% endfor %}
+                            </div>
+                        {% endfor %}
+                        <div class="d-grid mb-3">
+                            <button class="btn btn-primary btn-login text-uppercase fw-bold"
+                                    type="submit">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

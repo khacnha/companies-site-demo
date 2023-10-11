@@ -18,11 +18,21 @@ env = environ.Env(
     ENVIRONMENT=(str, "development"),
     DEBUG=(bool, False),
     SECRET_KEY=(str, ""),
+    # Database setting
     POSTGRES_HOST=(str, ""),
     POSTGRES_NAME=(str, ""),
     POSTGRES_USER=(str, ""),
     POSTGRES_PASSWORD=(str, ""),
     POSTGRES_PORT=(int, ""),
+    # Email Settings
+    DEFAULT_FROM_EMAIL=(str, "khacnha.it@gmail.com"),
+    EMAIL_HOST=(str, None),
+    EMAIL_HOST_USER=(str, None),
+    EMAIL_HOST_PASSWORD=(str, None),
+    EMAIL_PORT=(int, None),
+    EMAIL_USE_TLS=(bool, False),
+    EMAIL_USE_SSL=(bool, False),
+    EMAIL_VERIFICATION_LINK_TTL=(int, 24),
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -53,6 +63,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third-Party Apps
+    'widget_tweaks',
+    # My local app
+    'authentication.apps.AuthenticationConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +84,7 @@ ROOT_URLCONF = "companies_site.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -98,6 +112,11 @@ DATABASES = {
         "PORT": env("POSTGRES_PORT"),
     }
 }
+
+# Custom User Model
+# https://docs.djangoproject.com/en/4.1/topics/auth/customizing/#substituting-a-custom-user-model
+
+AUTH_USER_MODEL = "authentication.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -137,3 +156,23 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = "/"
+
+
+# SMTP backend
+# https://docs.djangoproject.com/en/4.2/topics/email/#smtp-backend
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+# Email config
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = env("EMAIL_USE_TLS")
+EMAIL_USE_SSL = env("EMAIL_USE_SSL")
+EMAIL_VERIFICATION_LINK_TTL = env("EMAIL_VERIFICATION_LINK_TTL")
+SERVER_EMAIL = DEFAULT_FROM_EMAIL

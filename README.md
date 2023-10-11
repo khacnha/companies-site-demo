@@ -19,17 +19,32 @@ there already is one
 ## Developer:
 - Creating a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 - Docker compose (optional)
+- Install pylint and pylint-django
 
 ## 1. Run project:
 ### 1.1 Run with docker:
-- create .env file
+- copy `.env.example` file to `.env` file and update the configuration.
 - Build: `docker-compose -f docker-compose.yml build`
 - Run server: `docker-compose up`
-- Link: http://localhost:8000/
 - Run migrate: `docker exec -it django_server python manage.py migrate`
+- Create superuser: `docker exec -it django_server python manage.py createsuperuser --username=admin --email=admin@gmail.com`
+- Admin page: http://localhost:8000/admin
 
 ### 1.1 Run without docker:
-- create .env file
+- copy `.env.example` file to `.env` file and update the configuration.
+- Install requirements.txt: `pip install -r requirements.txt`
 - Run command: `python manage.py runserver`
-- Link: http://localhost:8000/
-   Run migrate: `python manage.py migrate`
+- Run migrate: `python manage.py migrate`
+- Create superuser: `python manage.py createsuperuser --username=joe --email=joe@example.com`
+
+## 2. Check in browser:
+- Webiste page: http://localhost:8000/
+- Admin page: http://localhost:8000/admin
+
+## 3. Testing:
+- Run command in docker: `docker exec -it django_server python manage.py test`
+- Or without docker: `python manage.py test`
+
+## 4. Mailhog for development(only docker):
+- Website to check mail in local: `http://localhost:19802/`
+

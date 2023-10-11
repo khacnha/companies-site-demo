@@ -2,4 +2,5 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
+    "pylint.args": ["--load-plugins=pylint_django"]
 }

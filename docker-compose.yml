@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_NAME}
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - postgresql_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       timeout: 20s
@@ -26,5 +26,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      mailhog:
+        condition: service_started
+      
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - '19802:8025'
 volumes:
-  db-data:
+  postgresql_data:
