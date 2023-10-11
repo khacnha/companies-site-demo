@@ -1,0 +1,15 @@
+Dear {{ user }},
+
+Your request to download company {{ company }}'s profile has been approved.
+
+Please click on the following link to download:
+
+{{ download_link }}
+
+Note: This link will expire within 30 minutes.
+
+Thank you!
+
+Sincerely,
+
+Team

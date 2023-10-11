@@ -1,10 +1,8 @@
 from django.utils import timezone
 from django.core.mail import send_mail
 from django.conf import settings
-from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils import timezone
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -14,7 +12,9 @@ from django.contrib.auth import get_user_model
 
 class UserEmailMixin:
     """
-    Mixin for handling sending emails to user and the email verification bits
+    Mixin for handling sending emails to user:
+    - Send email verification to User
+    - Send request profile email to SuperUser
     """
 
     def send_email(self, subject, message, from_email=None, **kwargs):
@@ -31,6 +31,9 @@ class UserEmailMixin:
     def generator_email_token(self):
         return email_verification_token.make_token(user=self)
 
+    def check_email_token(self, token):
+        return email_verification_token.check_token(self, token)
+
     @staticmethod
     def verify_email_token(uidb64, token):
         User = get_user_model()
@@ -40,7 +43,7 @@ class UserEmailMixin:
         except (TypeError, ValueError, OverflowError, User.DoesNotExist):
             return None
 
-        if user is not None and email_verification_token.check_token(user, token):
+        if user is not None and user.check_email_token(token):
             user.verify_email()
         else:
             return None

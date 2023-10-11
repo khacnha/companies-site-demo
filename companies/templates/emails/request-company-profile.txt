@@ -1,0 +1,15 @@
+Dear {{ superuser }},
+
+There was 1 request to view {{ company }} Company's profile from user {{ requester }}.
+
+Click on the following link if you approve this request:
+
+{{ email_verification_url }}
+
+If you do not approve, please ignore this message.
+
+Thank you!
+
+Sincerely,
+
+Team

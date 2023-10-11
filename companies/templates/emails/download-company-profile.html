@@ -1,0 +1,35 @@
+{% extends "emails/email-base.html" %}
+{% block body_content %}
+  <p>Dear {{ user }},</p>
+  <p>
+    Your request to download company <b>{{ company }}</b>'s profile has been approved.
+    <br />
+    Please click on the following link to download:
+  </p>
+  <a href="{{ download_link }}"
+     style="width: 100%;
+            display: block;
+            background-color: #00A84F;
+            max-width: 220px;
+            padding: 12px 0 12px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center">Profile</a>
+  <p>
+    <i>Note: This link will expire within 30 minutes.</i>
+  </br></br>
+  <small>If you're having trouble clicking the "Approve request" button, copy and paste the URL below into your web browser
+    <a href="{{ download_link }}"
+       style="color: #009BFF;
+              word-break: break-all">{{ download_link }}</a>
+  </small>
+</p>
+<p>
+  Thank you!
+  <br />
+  Sincerely,
+  <br />
+  Team
+</p>
+{% endblock body_content %}

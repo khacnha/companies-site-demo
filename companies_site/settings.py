@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     # My local app
     'authentication.apps.AuthenticationConfig',
+    'companies.apps.CompaniesConfig',
 ]
 
 MIDDLEWARE = [

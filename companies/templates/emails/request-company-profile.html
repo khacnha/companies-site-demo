@@ -1,0 +1,32 @@
+{% extends "emails/email-base.html" %}
+{% block body_content %}
+  <p>Dear {{ superuser }},</p>
+  <p>
+    There was 1 request to view <b>{{ company }}</b> Company's profile from user <b>{{ requester }}</b>.
+    <br />
+    Click on the following link if you approve this request:
+  </p>
+  <a href="{{ email_verification_url }}"
+     style="width: 100%;
+            display: block;
+            background-color: #00A84F;
+            max-width: 220px;
+            padding: 12px 0 12px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            text-align: center">Approve request</a>
+  <p>If you do not approve, please ignore this message.</p>
+  <small>If you're having trouble clicking the "Approve request" button, copy and paste the URL below into your web browser
+    <a href="{{ email_verification_url }}"
+       style="color: #009BFF;
+              word-break: break-all">{{ email_verification_url }}</a>
+  </small>
+  <p>
+    Thank you!
+    <br />
+    Sincerely,
+    <br />
+    Team
+  </p>
+{% endblock body_content %}

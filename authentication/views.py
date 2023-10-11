@@ -39,9 +39,6 @@ class SignupView(View):
 
 
 class EmailVerificationView(View):
-    form_class = SignupForm
-    template_name = "signup.html"
-
     def get(self, request, uidb64, token):
         User = get_user_model()
         user = User.verify_email_token(uidb64, token)
@@ -52,4 +49,4 @@ class EmailVerificationView(View):
             )
             return redirect(settings.LOGIN_REDIRECT_URL)
 
-        return HttpResponse("Activation link is invalid!")
+        return HttpResponse("The link is invalid!")

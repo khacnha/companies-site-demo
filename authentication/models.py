@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from authentication.managers import UserManager
+from authentication.managers import SuperUserManager, UserManager
 from authentication.mixins import UserEmailMixin
 
 
@@ -16,6 +16,7 @@ class User(AbstractUser, UserEmailMixin):
     )
 
     objects = UserManager()
+    super = SuperUserManager()
 
     @property
     def email_verified(self):
