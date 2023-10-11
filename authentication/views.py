@@ -10,7 +10,7 @@ from django.contrib.auth import get_user_model
 
 class SignupView(View):
     form_class = SignupForm
-    template_name = "signup.html"
+    template_name = "registration/signup.html"
 
     def get(self, request):
         if request.user.is_authenticated:
