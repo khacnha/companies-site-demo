@@ -8,7 +8,8 @@ class Company(TimeStampMixin, CompanyRequestProfileMixin):
     profile_file = models.FileField(upload_to="company_profiles/")
 
     class Meta:
-        ordering = ['-id']
+        ordering = ["-id"]
+        verbose_name_plural = "Companies"
 
     def __str__(self):
         return self.name
