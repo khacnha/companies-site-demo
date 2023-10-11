@@ -18,7 +18,7 @@ there already is one
 
 ## Developer:
 - Creating a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
-- Docker compose (optional)
+- Docker (optional)
 - Install pylint and pylint-django
 
 ## 1. Run project:

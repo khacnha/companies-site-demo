@@ -74,7 +74,7 @@ class CompanyRequestProfileMixin:
         )
 
     def send_profile_to_user_email(self, user):
-        profile_presigned = self.profile_file  # todo
+        profile_presigned = self.profile_file.url
         mail_subject = f"Company profile of {self} company!!"
 
         template_context = dict(

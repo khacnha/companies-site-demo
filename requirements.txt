@@ -8,3 +8,5 @@ requests
 django-debug-toolbar
 django-widget-tweaks
 six
+django-storages==1.14.2
+boto3==1.28.62

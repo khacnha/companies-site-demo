@@ -6,7 +6,7 @@ Please click on the following link to download:
 
 {{ download_link }}
 
-Note: This link will expire within 30 minutes.
+Note: This link will expire within 60 minutes.
 
 Thank you!
 
