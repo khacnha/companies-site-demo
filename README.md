@@ -25,6 +25,13 @@ there already is one
 - Docker (optional)
 - Code Quality: pylint and pylint-django
 
+## Features:
+- Sign-in
+- Sign-up with confirmation email
+- Companies page
+- Profile Request flow
+- Support storage with S3 (Privacy mode)
+- Admin panel
 
 ## 1. Run project:
 ### 1.1 Run with docker:
