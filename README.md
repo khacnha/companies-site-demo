@@ -12,6 +12,10 @@ You don’t have to actually create a s3 bucket and write the code assuming
 there already is one
 ```
 
+**Watch demo**
+
+[![Demo](https://img.youtube.com/vi/HmmKULci8yo/0.jpg)](https://www.youtube.com/watch?v=HmmKULci8yo)
+
 ## Requirement:
 - Python v3.11
 - Django v4.2.1
@@ -19,7 +23,8 @@ there already is one
 ## Developer:
 - Creating a [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 - Docker (optional)
-- Install pylint and pylint-django
+- Code Quality: pylint and pylint-django
+
 
 ## 1. Run project:
 ### 1.1 Run with docker:
@@ -35,7 +40,7 @@ there already is one
 - Install requirements.txt: `pip install -r requirements.txt`
 - Run command: `python manage.py runserver`
 - Run migrate: `python manage.py migrate`
-- Create superuser: `python manage.py createsuperuser --username=joe --email=joe@example.com`
+- Create superuser: `python manage.py createsuperuser --username=admin --email=admin@gmail.com`
 
 ## 2. Check in browser:
 - Webiste page: http://localhost:8000/
@@ -44,6 +49,9 @@ there already is one
 ## 3. Testing:
 - Run command in docker: `docker exec -it django_server python manage.py test`
 - Or without docker: `python manage.py test`
+
+Results:
+![Testing result](/screenshots/testing.jpg)
 
 ## 4. Mailhog for development(only docker):
 - Website to check mail in local: `http://localhost:19802/`
