@@ -51,7 +51,7 @@ class CompanyRequestProfileMixin:
                 "token": requester.generator_email_token(),
             },
         )
-        mail_subject = f"Request permission to view {self}'s profiles!!"
+        mail_subject = f"[Admin] Review - Request permission to view {self}'s profiles!!"
 
         template_context = dict(
             superuser=superuser.username,
